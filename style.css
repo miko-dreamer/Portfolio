@@ -18,58 +18,142 @@
 html { scroll-behavior: smooth; }
 body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; overflow-x: hidden; }
 
+/* Navigation & Header Hover Effects */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 10%; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); }
-.menu-btn { cursor: pointer; font-size: 1.5rem; color: var(--text-color); }
+.logo { font-weight: 800; letter-spacing: 1px; color: var(--primary-color); }
+
 .nav-links { display: flex; list-style: none; }
-.nav-links li { margin: 0 15px; }
-.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; }
+.nav-links li { margin: 0 15px; position: relative; }
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    font-weight: 500; 
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--primary-color); }
+
+/* Navigation Underline Animation */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
 .toggle-btn { background: var(--card-bg); border: 1px solid var(--border-color); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; color: var(--primary-color); display: flex; align-items: center; justify-content: center; }
 
+/* Sidebar */
 .sidebar { position: fixed; top: 0; left: -300px; width: 280px; height: 100%; background: var(--card-bg); z-index: 2000; padding: 2rem; transition: 0.4s ease; box-shadow: 5px 0 15px rgba(0,0,0,0.1); }
 .sidebar.active { left: 0; }
 .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
 .sidebar-overlay.active { display: block; }
 .close-btn { font-size: 2.5rem; position: absolute; top: 10px; right: 20px; cursor: pointer; }
-.sidebar-links { list-style: none; margin-top: 50px; }
-.sidebar-links a { text-decoration: none; color: var(--text-color); display: block; padding: 12px; border: 1px solid var(--border-color); border-radius: 10px; margin: 10px 0; }
-.sidebar-links a:hover { background: var(--primary-color); color: white; transform: translateX(10px); }
 
+.sidebar-links { list-style: none; margin-top: 50px; }
+.sidebar-links a { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    display: block; 
+    padding: 12px; 
+    border: 1px solid var(--border-color); 
+    border-radius: 10px; 
+    margin: 10px 0; 
+    transition: 0.3s;
+}
+
+.sidebar-links a:hover { 
+    background: var(--primary-color); 
+    color: white !important; 
+    transform: translateX(10px); 
+    padding-left: 20px;
+}
+
+/* Hero Section */
 header { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
 .profile-img { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 8px solid var(--card-bg); box-shadow: 0 15px 45px rgba(0,0,0,0.2); margin-bottom: 30px; }
 .highlight { color: var(--primary-color); font-weight: 800; font-size: 3.5rem; }
 
+/* Expertise Cards with Advanced Hover */
 .section { padding: 80px 10%; text-align: center; }
 .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-.skill-item { background: var(--card-bg); padding: 35px 25px; border-radius: 25px; border: 1px solid var(--border-color); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-.skill-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+
+.skill-item { 
+    background: var(--card-bg); 
+    padding: 35px 25px; 
+    border-radius: 25px; 
+    border: 1px solid var(--border-color); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.skill-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; transition: transform 0.3s ease; }
+.skill-item:hover .skill-icon { transform: scale(1.1) rotate(5deg); }
+
 .skill-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 15px; }
-.badge { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; color: white; transition: 0.3s; }
+.badge { display: flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; color: white; }
 
 .html { background: #E34F26; } .css { background: #1572B6; } .js { background: #F7DF1E; color: #000; }
 .java { background: #007396; } .python { background: #3776AB; } .gold { background: #FFD700; color: #000; }
 .analysis { background: #2ECC71; } .mt5 { background: #4A90E2; } .ps { background: #31A8FF; }
 .ui { background: #8B5CF6; } .brand { background: #EC4899; }
 
+/* Project Cards */
 .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-.project-card { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color); text-decoration: none; color: inherit; display: block; transition: 0.4s ease; }
-.project-card:hover { transform: translateY(-10px); }
+.project-card { 
+    background: var(--card-bg); 
+    padding: 40px; 
+    border-radius: 20px; 
+    border: 1px solid var(--border-color); 
+    text-decoration: none; 
+    color: inherit; 
+    display: block; 
+    transition: all 0.4s ease;
+}
 
+.project-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-color: var(--primary-color);
+}
+
+.view-link { color: var(--primary-color); font-weight: bold; display: block; margin-top: 15px; }
+
+/* Contact Form */
 .contact-container { max-width: 700px; margin: 40px auto; background: var(--card-bg); padding: 40px; border-radius: 25px; border: 1px solid var(--border-color); }
 .form-body { display: flex; flex-direction: column; gap: 20px; }
 .input-group { display: flex; gap: 20px; }
-.form-body input, .form-body textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); font-size: 1rem; outline: none; transition: 0.3s; }
-.form-body input:focus, .form-body textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(37, 99, 235, 0.2); }
+.form-body input, .form-body textarea { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-color); color: var(--text-color); font-size: 1rem; outline: none; }
+.form-body input:focus, .form-body textarea:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(37, 99, 235, 0.1); }
 .send-btn { width: 100%; cursor: pointer; border: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 1.1rem; }
 
-#my-form-status { margin-top: 15px; font-weight: bold; }
-#my-form-status.success { color: #2ecc71; }
-#my-form-status.error { color: #e74c3c; }
-
+/* Footer & Socials */
 .socials { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
 .social-card { width: 55px; height: 55px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-color); font-size: 1.6rem; display: flex; align-items: center; justify-content: center; transition: 0.4s; }
 .social-card:hover { background: var(--primary-color); color: white; transform: translateY(-8px) rotate(8deg); }
+
 .btn { padding: 12px 30px; background: var(--primary-color); color: white; text-decoration: none; border-radius: 10px; display: inline-block; margin: 10px; font-weight: 600; }
 .btn-outline { background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); }
-footer { padding: 40px 10%; text-align: center; border-top: 1px solid var(--border-color); }
 
-@media (max-width: 768px) { .nav-links { display: none; } .highlight { font-size: 2.4rem; } .input-group { flex-direction: column; } }
+footer { padding: 40px 10%; text-align: center; border-top: 1px solid var(--border-color); }
+.copyright { margin-top: 20px; opacity: 0.7; font-size: 0.9rem; }
+
+@media (max-width: 768px) { 
+    .nav-links { display: none; } 
+    .highlight { font-size: 2.4rem; } 
+    .input-group { flex-direction: column; } 
+}
