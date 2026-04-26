@@ -80,7 +80,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 /* Hero Section */
 header { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
 .profile-img { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 8px solid var(--card-bg); box-shadow: 0 15px 45px rgba(0,0,0,0.2); margin-bottom: 30px; }
-.highlight { color: var(--primary-color); font-weight: 800; font-size: 3.5rem; }
+.highlight { color: var(--primary-color); font-weight: 800; font-size: 1.5rem; }
 
 /* Expertise Cards with Advanced Hover */
 .section { padding: 80px 10%; text-align: center; }
